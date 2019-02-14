@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login
 class LoginView(View):
 
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('core:index')
         return render(request, 'homepage/login.html')
 
     def post(self, request):
@@ -19,4 +21,4 @@ class LoginView(View):
             return HttpResponse('dang nhap khong thanh cong')
 
         login(request, user)
-        return HttpResponse('thanh cong')
+        return redirect('core:index')
