@@ -40,7 +40,7 @@ class UserRegister(View):
             pas2 = fm.cleaned_data['password2']
             email = fm.cleaned_data['email']
             if pas1 == pas2:
-                user = CustomerUser.objects.create_user(username=username, password=pas1, email=email)
+                CustomerUser.objects.create_user(username=username, password=pas1, email=email)
                 return HttpResponse('dang ky thanh cong')
             else:
                 return HttpResponse('password not valid')
