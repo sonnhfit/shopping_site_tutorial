@@ -7,4 +7,5 @@ from product import models as product_models
 class HomeView(View):
     def get(self, request):
         cate = product_models.Category.objects.all()
-        return render(request, 'homepage/index.html', {'categorys': cate})
+        product = product_models.Product.objects.all()[:6]
+        return render(request, 'homepage/index.html', {'categorys': cate, 'products': product})
