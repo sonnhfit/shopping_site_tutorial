@@ -7,6 +7,17 @@ from .utils import *
 
 class HomeView(View):
     def get(self, request):
-        global_data = get_dict_home_page(request.session.session_key)
         variation = product_models.Variation.objects.all()[:6]
-        return render(request, 'homepage/index.html', {'global_data': global_data, 'variation': variation})
+        if request.user.is_authenticated:
+            global_data = get_dict_home_page(request.user, -1)
+            cart_id = -1
+        else:
+            if 'cart_id' in request.COOKIES:
+                cart_id = request.COOKIES['cart_id']
+            else:
+                cart_id = -1
+            global_data = get_dict_home_page(None, cart_id)
+
+        response = render(request, 'homepage/index.html', {'global_data': global_data, 'variation': variation})
+        set_cookie(response, 'cart_id', cart_id)
+        return response

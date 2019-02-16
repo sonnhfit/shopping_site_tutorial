@@ -219,7 +219,7 @@
 												<div class="product_extras">
 													<div class="product_price discount">{{ varia.price }}<span>$300</span></div>
 													<div class="product_name"><div><a href="{% url 'product:detail' varia.id %}">{{ varia.product.title }}</a></div></div>
-													<button class="product_cart_button">Thêm vào giỏ</button>
+													<button onclick="add_cart({{ varia.id }}, 1)" class="product_cart_button">Thêm vào giỏ</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -898,6 +898,6 @@
 <script src="{% static 'homepage/plugins/slick-1.8.0/slick.js' %}"></script>
 <script src="{% static 'homepage/plugins/easing/easing.js' %}"></script>
 <script src="{% static 'homepage/js/custom.js' %}"></script>
-
+<script src="{% static 'homepage/js/myscript.js' %}"></script>
 {% endblock %}
 
