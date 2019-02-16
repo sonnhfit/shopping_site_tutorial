@@ -6,7 +6,7 @@ from django.contrib.sessions.models import Session
 
 
 class Cart(models.Model):
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None, unique=True)
     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
