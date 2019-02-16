@@ -1,9 +1,12 @@
 from django.db import models
 from product.models import Variation
 from user.models import CustomerUser
+from django.contrib.sessions.models import Session
 # Create your models here.
 
+
 class Cart(models.Model):
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
