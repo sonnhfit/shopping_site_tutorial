@@ -8,7 +8,7 @@ from product import models as product_models
 class ProductDetail(View):
 
     def get(self, request, id):
-        product = product_models.Product.objects.get(id=id)
+        variation = product_models.Variation.objects.get(id=id)
         cate = product_models.Category.objects.all()
-        context = {'categorys': cate, 'product': product}
+        context = {'categorys': cate, 'variation': variation}
         return render(request, 'homepage/product_view.html', context)
