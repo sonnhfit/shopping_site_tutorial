@@ -4,11 +4,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 def get_cart_id_from_ss_key(ss_key):
     try:
-        cart = Cart.objects.get(session_key=ss_key)
+        cart = Cart.objects.get(session=ss_key)
     except ObjectDoesNotExist:
         return 0
 
     return cart.id
+
 
 def get_count_cart(ss_key):
     cart_id = get_cart_id_from_ss_key(ss_key)
