@@ -7,5 +7,9 @@ from core.utils import *
 
 class CartView(View):
     def get(self, request):
-        global_data = get_dict_home_page(request.session.session_key)
-        return render(request, 'homepage/cart_view.html',{'global_data': global_data})
+        ss_key = request.session.session_key
+        cart_id = get_cart_id_from_ss_key(ss_key)
+        global_data = get_dict_home_page(ss_key)
+        cart_item = CartItem.objects.filter(cart_id=cart_id)
+        context = {'global_data': global_data, 'cart_item': cart_item}
+        return render(request, 'homepage/cart_view.html', context)
