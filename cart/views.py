@@ -51,7 +51,7 @@ class AddCartAPIView(APIView):
                 cart = Cart.objects.create(user_id=user_id)
             varia = product_models.Variation.objects.get(id=item_id)
             CartItem.objects.create(cart=cart, quantity=quantity, item=varia)
-            return Response('create thanh cong', status=status.HTTP_200_OK)
+            return Response(cart.id, status=status.HTTP_200_OK)
 
         else:
             if cart_id == -1:

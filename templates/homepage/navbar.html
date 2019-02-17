@@ -1,240 +1,130 @@
 {% load static %}
-<!-- Header -->
+<!-- header content-->
+      <header class="header">
+         <div class="menu_mb visible-xs visible-sm ">
+            <button class="nav-toggle">
+            <span></span>
+            </button>
+            <a href="" class="logo_mb"><img class="img_logo_mb" src="img/logo.png" alt=""/></a>
+            <!-- search mobile -->
+            <div class="search_drop">
+               <a href="" class="btn_search"><i class="fa fa-search"></i></a>
+               <form class="form_search">
+                  <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                     <span class="input-group-btn">
+                     <button class="btn btn-default" type="button">Tìm kiếm</button>
+                     </span>
+                  </div>
+               </form>
+            </div>
+            <!-- /search mobile -->
+         </div>
+         <!-- /menu_mb -->
+         <div class="clearfix clearfix-60 visible-sm visible-xs"></div>
+         <div class="menu_header sticky-header">
+            <div class="headerTop">
+               <a class="headerTop__link">Assign a menu in Theme Options > Menus</a>
+               <ul class="shareIcon">
+                  <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i>
+                     </a>
+                     <span>Follow On Facebook</span>
+                  </li>
+                  <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i>
+                     </a>
+                     <span>Follow on instagram</span>
+                  </li>
+                  <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i>
+                     </a>
+                     <span>Follow on twitter</span>
+                  </li>
+                  <li><a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                     </a>
+                     <span>Send us email</span>
+                  </li>
+                  <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i>
+                     </a>
+                     <span>Follow on youtube</span>
+                  </li>
+               </ul>
+               <div class="clearfix"></div>
+            </div>
+            <div class="headerBottom">
+               <div class="headerBottom--inner">
+                  <div class="logoPc">
+                     <a href="" class="logo_pc">
+                     <img src="img/logo.png" alt="">
+                     </a>
+                     <p class="slogan">Hãy chơi game một cách chuyên nghiệp</p>
+                  </div>
+                  <div class="rightContent">
+                     <!--search theo danh mục-->
+                     <form class="search_box">
+                        <div class="input-group">
+                           <input type="text" class="form-control input_search" name="key" placeholder="Tìm kiếm...">
+                           <button class="btn btn-default but_search_top" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                           </button>
+                        </div>
+                     </form>
 
-	<header class="header">
+                  <div class="loginGroup">
+                     {% if user.is_authenticated %}
+                        <span>Chào <a href="">{{ user.username }}</span>
+                     {% else %}
+                     <span style="color: #fff;"><a  href="{% url 'user:login' %}">Đăng nhập</a></span>
+                     {% endif %}
+                     |
+                        <span><a href="{% url 'cart:view_cart' %}">Giỏ hàng</a></span>
+                        <span class="cartIcon">{{ global_data.cart_count }}</span>
+                     </div>
+                     <!--/search theo danh mục-->
+                  </div>
 
-		<!-- Top Bar -->
+                  <!-- menu main -->
+               </div>
+               <div class="clearfix"></div>
+                  <!-- menu main -->
+                  <div class="menu_main">
+                     <nav class="nav is-fixed">
+                        <div class="nav-container">
+                           <ul class="nav-menu menu clearfix">
+                              {% for cate_item in global_data.categorys %}
+                              <li class="menu-item">
+                                 <a href="" class="menu-link">{{ cate_item.title }}</a>
+                              </li>
+                              {% endfor %}
 
-		<div class="top_bar">
-			<div class="container">
-				<div class="row">
-					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
-						<div class="top_bar_content ml-auto">
-							<div class="top_bar_menu">
-
-							</div>
-							<div class="top_bar_user">
-								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								{% if not user.is_authenticated %}
-								<div><a href="{% url 'user:login' %}">Đăng nhập</a></div>
-								<div><a href="{% url 'user:register' %}">Đăng ký</a></div>
-								{% else %}
-									<div>Chào <a href="#">{{ user.username }}</a></div>
-									<div><a href="">Đăng xuất</a></div>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Header Main -->
-
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
-
-					<!-- Logo -->
-					<div class="col-lg-2 col-sm-3 col-3 order-1">
-						<div class="logo_container">
-							<div class="logo"><a href="{% url 'core:index' %}">OneTech</a></div>
-						</div>
-					</div>
-
-					<!-- Search -->
-					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Tìm sản phẩm...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">Tất cả danh mục</a></li>
-													{% for cate_item in global_data.categorys %}
-													<li><a class="clc" href="#">{{ cate_item.title }}</a></li>
-													{% endfor %}
-												</ul>
-											</div>
-										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="{% static 'homepage/images/search.png' %}" alt=""></button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Wishlist -->
-					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
-								<div class="wishlist_content">
-
-								</div>
-							</div>
-
-							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
-										<div class="cart_count"><span>{{ global_data.cart_count }}</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="{% url 'cart:view_cart' %}">Giỏ hàng</a></div>
-										<div class="cart_price">{{ global_data.total_price }}</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Main Navigation -->
-
-		<nav class="main_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-
-						<div class="main_nav_content d-flex flex-row">
-
-							<!-- Categories Menu -->
-
-							<div class="cat_menu_container">
-								<div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-									<div class="cat_burger"><span></span><span></span><span></span></div>
-									<div class="cat_menu_text">Danh mục</div>
-								</div>
-
-								<ul class="cat_menu">
-                                    {% for cate_item in global_data.categorys %}
-									<li><a href="#">{{ cate_item.title }} <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                    {% endfor %}
-								</ul>
-							</div>
-
-							<!-- Main Nav Menu -->
-
-							<div class="main_nav_menu ml-auto">
-								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="#">Trang chủ<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="contact.html">Liên hệ<i class="fas fa-chevron-down"></i></a></li>
-								</ul>
-							</div>
-
-							<!-- Menu Trigger -->
-
-							<div class="menu_trigger_container ml-auto">
-								<div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-									<div class="menu_burger">
-										<div class="menu_trigger_text">menu</div>
-										<div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-
-		<!-- Menu -->
-
-		<div class="page_menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-
-						<div class="page_menu_content">
-
-							<div class="page_menu_search">
-								<form action="#">
-									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
-								</form>
-							</div>
-							<ul class="page_menu_nav">
-								<li class="page_menu_item has-children">
-									<a href="#">Language<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item">
-									<a href="#">Home<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-										<li class="page_menu_item has-children">
-											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-											<ul class="page_menu_selection">
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
-							</ul>
-
-							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</header>
-
-	<!-- Banner -->
+                              <!-- btn search-->
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <!--slide-->
+         <div class="owl-carousel slider_main">
+            <div class="item">
+               <a href=""><img src="img/slide.jpg" alt=""></a>
+               <div class="slide__text">
+                  <h1>BossGear</h1>
+                  <h2>Hãy chơi game một cách chuyên nghiệp</h2>
+                  <div class="slide__btn">
+                     <a href="">Bàn Phím</a> <a href="">Chuột</a> <a href="">Tai nghe</a>
+                     <div class="clearfix"></div>
+                  </div>
+               </div>
+            </div>
+            <div class="item">
+               <a href=""><img src="img/slide.jpg" alt=""></a>
+               <div class="slide__text">
+                  <h1>BossGear</h1>
+                  <h2>Hãy chơi game một cách chuyên nghiệp</h2>
+                  <div class="slide__btn">
+                     <a href="">Bàn Phím</a> <a href="">Chuột</a> <a href="">Tai nghe</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- /.header content -->
