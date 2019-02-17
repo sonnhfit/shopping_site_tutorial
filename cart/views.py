@@ -75,11 +75,13 @@ class AddCartAPIView(APIView):
             #
             #     return Response(data=cart_sertial.data, status=status.HTTP_200_OK)
             # else:
-                try:
-                    cart = Cart.objects.get(id=cart_id)
-                except ObjectDoesNotExist:
-                    return Response('bad request', status=status.HTTP_400_BAD_REQUEST)
-                varia = product_models.Variation.objects.get(id=item_id)
-                CartItem.objects.create(cart=cart, item=varia, quantity=quantity)
-                cart_sertial = CartSerializer(data=cart)
-                return Response(cart_sertial.data, status=status.HTTP_200_OK)
+
+            # try:
+            #     cart = Cart.objects.get(id=cart_id)
+            # except ObjectDoesNotExist:
+            #     return Response('bad request', status=status.HTTP_400_BAD_REQUEST)
+            #
+            # varia = product_models.Variation.objects.get(id=item_id)
+            # CartItem.objects.create(cart=cart, item=varia, quantity=quantity)
+            # cart_sertial = CartSerializer(data=cart)
+            # return Response(cart_sertial.data, status=status.HTTP_200_OK)
