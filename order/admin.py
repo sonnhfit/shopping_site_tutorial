@@ -38,7 +38,7 @@ make_unpublished.short_description = "Chưa hoàn thành đơn hàng"
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'shipping_address', 'is_completed',)
+    list_display = ('id', 'name', 'shipping_address', 'phone_number', 'is_completed', )
     list_filter = (OrderFilter,)
     actions = [make_published, make_unpublished]
 

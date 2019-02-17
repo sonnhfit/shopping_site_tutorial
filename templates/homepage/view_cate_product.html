@@ -24,37 +24,18 @@
          <div class="clearfix"></div>
          <div class="container">
             <div class="row_pc">
-               <h2 class="titleH2"><a href="">Sản phẩm mới</a></h2>
+               <h2 class="titleH2"><a href="">SẢN PHẨM:  {{ cates.title }}</a></h2>
                <div class="product owl-carousel">
                   {% for varia in  variation %}
                   <div class="productItem item">
-                     <a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">
-                     <span class="seeMore">xem thêm</span></a>
-                     <a onclick="add_cart({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>
-                     <span class="sale">-33%</span>
-
-                     <h3><a href="">{{ varia.product.title }}</a></h3>
-                     <div class="price">
-                       <span>{{ varia.product.price }} <sup>đ</sup></span>
-                        <span>{{ varia.price }} <sup>đ</sup></span>
-                     </div>
-                  </div>
-
-                  {% endfor %}
-               </div>
-               <div class="clearfix-30"></div>
-               <h2 class="titleH2"><a href="">Sản phẩm đang khuyến mại</a></h2>
-               <div class="product owl-carousel">
-                  {% for varia in  variation %}
-                  <div class="productItem item">
-                     <a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">
+                     <a href="{% url 'product:detail' varia.id %}"><img src="{{ varia.product.product_img }}" alt="">
                      <span class="seeMore">xem thêm</span></a>
                      <a onclick="add_cart_login({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>
                      <span class="sale">-33%</span>
 
                      <h3><a href="">{{ varia.product.title }}</a></h3>
                      <div class="price">
-                       <span>{{ varia.product.price }} <sup>đ</sup></span>
+                        <span>{{ varia.product.price }} <sup>đ</sup></span>
                         <span>{{ varia.price }} <sup>đ</sup></span>
                      </div>
                   </div>

@@ -10,7 +10,7 @@
 							<ul class="cart_list">
 								{% for item in cart_item %}
 								<li class="cart_item clearfix">
-									<div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
+									<div class="cart_item_image"><img src="/media/{{ item.item.product.product_img }}" alt=""></div>
 									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 										<div class="cart_item_name cart_info_col">
 											<div class="cart_item_title">Tên</div>
@@ -28,6 +28,15 @@
 											<div class="cart_item_title">Tổng</div>
 											<div class="cart_item_text"> {{ item.get_total_price }} VNĐ</div>
 										</div>
+										<div class="cart_item_price cart_info_col">
+											<div class="cart_item_title"></div>
+											{% if not request.user.is_authenticated %}
+											<div class="cart_item_text"><button onclick="del_cart({{ item.id }})">Xóa</button></div>
+											{% else %}
+											<div class="cart_item_text"><button onclick="del_cart_user({{ item.id }})">Xóa</button></div>
+											{% endif %}
+
+										</div>
 									</div>
 								</li>
 								{% endfor %}
@@ -43,8 +52,8 @@
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear">Add to Cart</button>
-							<button type="button" class="button cart_button_checkout">Thanh toán</button>
+
+							<a href="{% url 'order:checkout' %}"  class="button cart_button_checkout">Thanh toán</a>
 						</div>
 					</div>
 				</div>
