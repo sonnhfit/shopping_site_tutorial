@@ -20,7 +20,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255, default='', verbose_name='Tiêu đề')
     description = models.TextField(default='', verbose_name='Mô tả')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Loại sản phẩm')
-    product_img = models.CharField(max_length=255, default='', verbose_name='Ảnh sản phẩm')
+    product_img = models.ImageField(upload_to='products/', verbose_name='Ảnh sản phẩm')
     price = models.IntegerField(default=0, verbose_name='giá tiền')
     active = models.BooleanField(default=True, verbose_name='trạng thái')
 
@@ -28,7 +28,7 @@ class Product(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = "Sản phẩm ban đầu"
+        verbose_name_plural = "Sản phẩm"
 
 
 class Variation(models.Model):

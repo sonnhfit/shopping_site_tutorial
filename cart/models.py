@@ -9,6 +9,8 @@ class Cart(models.Model):
     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE, default=None, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return 'giỏ hàng số %s'%self.id
 
 
 class CartItem(models.Model):
