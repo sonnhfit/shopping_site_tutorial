@@ -9,20 +9,38 @@ class Category(models.Model):
     description = models.TextField(default='')
     active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Loại Sản phẩm"
+
 
 class Product(models.Model):
-    title = models.CharField(max_length=255, default='')
-    description = models.TextField(default='')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    product_img = models.CharField(max_length=255, default='')
-    price = models.IntegerField(default=0)
-    active = models.BooleanField(default=True)
+    title = models.CharField(max_length=255, default='', verbose_name='Tiêu đề')
+    description = models.TextField(default='', verbose_name='Mô tả')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Loại sản phẩm')
+    product_img = models.ImageField(upload_to='products/', verbose_name='Ảnh sản phẩm')
+    price = models.IntegerField(default=0, verbose_name='giá tiền')
+    active = models.BooleanField(default=True, verbose_name='trạng thái')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Sản phẩm"
 
 
 class Variation(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, default='')
-    price = models.IntegerField(default=0)
-    sale_price = models.IntegerField(default=0)
-    inventory = models.IntegerField(default=0)
-    active = models.BooleanField(default=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='sản phẩm')
+    title = models.CharField(max_length=255, default='', verbose_name='Tiêu đề')
+    price = models.IntegerField(default=0, verbose_name='Giá tiền')
+    sale_price = models.IntegerField(default=0, verbose_name='Giá sale')
+    inventory = models.IntegerField(default=0, verbose_name='Tồn kho')
+    active = models.BooleanField(default=True, verbose_name='Trạng thái')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Sản phẩm change"

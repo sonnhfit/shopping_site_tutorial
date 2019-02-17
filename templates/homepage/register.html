@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'homepage/styles/login_style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-login">
+<h2>Đăng ký</h2>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="imgcontainer">
+    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+{% csrf_token %}
+      <label for="uname"><b>Email</b></label>
+      {{ fm.email }}
+    <label for="uname"><b>Tài khoản</b></label>
+    {{ fm.username }}
+
+    <label for="psw"><b>Mật khẩu</b></label>
+    {{ fm.password1 }}
+
+    <label for="psw"><b>Nhập lại mật khẩu</b></label>
+    {{ fm.password2 }}
+    <button type="submit">Đăng ký</button>
+
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+
+  </div>
+</form>
+</div>
+</body>
+</html>
