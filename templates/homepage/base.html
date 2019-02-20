@@ -10,12 +10,13 @@
 {% endblock %}
 </head>
 <body>
+<div class="super_container">
 {% include 'homepage/navbar.html' %}
 {% block content %}
 
 {% endblock %}
 {% include 'homepage/footer.html' %}
-{% block jsblock %}
-{% endblock %}
+{% block jsblock %} {% endblock %}
+</div>
 </body>
 </html>

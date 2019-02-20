@@ -2,145 +2,600 @@
 {% load static %}
 
 {% block cssblock %}
-	<link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/font-awesome.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/animate.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/owl.carousel.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/common.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/style.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/setmedia.css' %}" rel="stylesheet"/>
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+<link href="{% static 'homepage/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/responsive.css' %}">
 {% endblock %}
 {% block content %}
- <!-- main content -->
-      <main>
-         <div class="imgBelow">
-            <a href=""><img src="{% static 'homepage/img/anhduoislide.jpg' %}" alt=""></a>
-            <div class="text">
-               <span><strong>Mua chuột nhỏ<br>Tặng lót bự</strong></span> <br>
-               <span>số lượng có hạn</span>
-            </div>
-         </div>
-         <div class="clearfix"></div>
-         <div class="container">
-            <div class="row_pc">
-               <h2 class="titleH2"><a href="">Sản phẩm mới</a></h2>
-               <div class="product owl-carousel">
+ <!--&lt;!&ndash; main content &ndash;&gt;-->
+      <!--<ain>-->
+         <!--<div class="imgBelow">-->
+            <!--<a href=""><img src="{% static 'homepage/img/anhduoislide.jpg' %}" alt=""></a>-->
+            <!--<div class="text">-->
+               <!--<span><strong>Mua chuột nhỏ<br>Tặng lót bự</strong></span> <br>-->
+               <!--<span>số lượng có hạn</span>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--<div class="clearfix"></div>-->
+         <!--<div class="container">-->
+            <!--<div class="row_pc">-->
+               <!--<h2 class="titleH2"><a href="">Sản phẩm mới</a></h2>-->
+               <!--<div class="product owl-carousel">-->
+                  <!--{% for varia in  variation %}-->
+                  <!--<div class="productItem item">-->
+                     <!--<a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">-->
+                     <!--<span class="seeMore">xem thêm</span></a>-->
+                     <!--<a onclick="add_cart({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>-->
+                     <!--<span class="sale">-33%</span>-->
+
+                     <!--<h3><a href="">{{ varia.product.title }}</a></h3>-->
+                     <!--<div class="price">-->
+                       <!--<span>{{ varia.product.price }} <sup>đ</sup></span>-->
+                        <!--<span>{{ varia.price }} <sup>đ</sup></span>-->
+                     <!--</div>-->
+                  <!--</div>-->
+                  <!--{% endfor %}-->
+               <!--</div>-->
+               <!--<div class="clearfix-30"></div>-->
+               <!--<h2 class="titleH2"><a href="">Sản phẩm đang khuyến mại</a></h2>-->
+               <!--<div class="product owl-carousel">-->
+                  <!--{% for varia in  variation %}-->
+                  <!--<div class="productItem item">-->
+                     <!--<a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">-->
+                     <!--<span class="seeMore">xem thêm</span></a>-->
+                     <!--<a onclick="add_cart_login({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>-->
+                     <!--<span class="sale">-33%</span>-->
+
+                     <!--<h3><a href="">{{ varia.product.title }}</a></h3>-->
+                     <!--<div class="price">-->
+                       <!--<span>{{ varia.product.price }} <sup>đ</sup></span>-->
+                        <!--<span>{{ varia.price }} <sup>đ</sup></span>-->
+                     <!--</div>-->
+                  <!--</div>-->
+
+                  <!--{% endfor %}-->
+               <!--</div>-->
+
+               <!--<div class="clearfix-30"></div>-->
+
+
+               <!--<div class="clearfix-30"></div>-->
+               <!--<div class="benefit">-->
+                  <!--<div class="row">-->
+                     <!--<h2 class="titleH2"><a href="">đến với bossgear bạn sẽ được</a></h2>-->
+                     <!--<div class="col-md-4">-->
+                        <!--<div class="benefit__item">-->
+                           <!--<a href=""><img src="img/icon1.png" alt=""></a>-->
+                           <!--<h3><a href="">Hỗ trợ ship cod toàn quốc</a></h3>-->
+                           <!--<p>Ship tận nhà thanh toán sau khi nhận hàng, Thời gian ship từ 2-5 ngày .</p>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-4">-->
+                        <!--<div class="benefit__item">-->
+                           <!--<a href=""><img src="img/anh2.png" alt=""></a>-->
+                           <!--<h3><a href="">Dịnh vụ bảo hành nhanh gọn</a></h3>-->
+                           <!--<p>Hỗ trợ bảo hành nhanh chóng và nhiệt tình, Free ship trở lại cho khách hàng nếu bị lỗi và khách hàng ở xa.</p>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-4">-->
+                        <!--<div class="benefit__item border&#45;&#45;none">-->
+                           <!--<a href=""><img src="img/anh3.png" alt=""></a>-->
+                           <!--<h3><a href="">giải đáp khách hàng nhiệt tình</a></h3>-->
+                           <!--<p>Hỗ trợ khách hàng nhanh chóng, nhiệt tình, thân thiện.</p>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                  <!--</div>-->
+               <!--</div>-->
+               <!--<div class="clearfix"></div>-->
+
+               <!--<div class="clearfix"></div>-->
+               <!--<div class="follow">-->
+                  <!--<div class="row">-->
+                     <!--<h2 class="titleH2"><a href="">theo dõi bossgear bmt</a></h2>-->
+                     <!--<div class="col-md-4 col-sm-4">-->
+                        <!--<div class="followItem">-->
+                           <!--<h3>fanpage</h3>-->
+                           <!--<a href="" class="followItem__icon"><i class="fa fa-facebook" aria-hidden="true"></i>-->
+                           <!--</a>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-4 col-sm-4 ">-->
+                        <!--<div class="followItem">-->
+                           <!--<h3>Kênh youtube</h3>-->
+                           <!--<a href="" class="followItem__icon"><i class="fa fa-youtube-play" aria-hidden="true"></i>-->
+                           <!--</a>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-4 col-sm-4">-->
+                        <!--<div class="followItem ">-->
+                           <!--<h3>vị trí shop</h3>-->
+                           <!--<a href="" class="followItem__box">Map <i class="fa fa-map-marker" aria-hidden="true"></i>-->
+                           <!--</a>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                  <!--</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</main>-->
+      <!--&lt;!&ndash; footer &ndash;&gt;-->
+
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+
+		<div class="home">
+			<!-- Home Slider -->
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">New Arrivals</div>
+											<div class="home_subtitle">Summer Wear</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_1.jpg" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="images/home_2.jpg" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_3.jpg" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">Popular</div>
+											<div class="home_subtitle">Summer Wear</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_1.jpg" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="images/product_1.jpg" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_3.jpg" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">Trendsetters</div>
+											<div class="home_subtitle">Summer Wear</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_1.jpg" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="images/product_2.jpg" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_3.jpg" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">Premium Items</div>
+											<div class="home_subtitle">Summer Wear</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_1.jpg" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="images/product_3.jpg" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="images/home_3.jpg" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="home_slider_nav home_slider_nav_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div class="home_slider_nav home_slider_nav_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+
+				<!-- Home Slider Dots -->
+
+				<div class="home_slider_dots_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="home_slider_dots">
+									<ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-center justify-content-center">
+										<li class="home_slider_custom_dot active">01</li>
+										<li class="home_slider_custom_dot">02</li>
+										<li class="home_slider_custom_dot">03</li>
+										<li class="home_slider_custom_dot">04</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Products -->
+
+		<div class="products">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3">
+						<div class="section_title text-center">Popular on Little Closet</div>
+					</div>
+				</div>
+				<div class="row page_nav_row">
+					<div class="col">
+						<div class="page_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-center">
+								<li class="active"><a href="category.html">Women</a></li>
+								<li><a href="category.html">Men</a></li>
+								<li><a href="category.html">Kids</a></li>
+								<li><a href="category.html">Home Deco</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row products_row">
                   {% for varia in  variation %}
-                  <div class="productItem item">
-                     <a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">
-                     <span class="seeMore">xem thêm</span></a>
-                     <a onclick="add_cart({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>
-                     <span class="sale">-33%</span>
+					<!-- Product -->
+					<div class="col-xl-4 col-md-6">
+						<div class="product">
+							<div class="product_image"><img src="/media/{{ varia.product.product_img }}" alt=""></div>
+							<div class="product_content">
+								<div class="product_info d-flex flex-row align-items-start justify-content-start">
+									<div>
+										<div>
+											<div class="product_name"><a href="{% url 'product:detail' varia.id %}">{{ varia.product.title }}</a></div>
+											<div class="product_category">In <a href="{% url 'core:cate_view' varia.product.category.slug %}">{{ varia.product.category.title }}</a></div>
+										</div>
+									</div>
+									<div class="ml-auto text-right">
+										<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+										<div class="product_price text-right"></div>
+									</div>
+								</div>
+								<div class="product_buttons">
+									<div class="text-right d-flex flex-row align-items-start justify-content-start">
+										<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+										</div>
+										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+											<div onclick="add_cart({{ varia.id }}, 1);"><div><img src="{% static 'homepage/images/cart.svg' %}" class="svg" alt=""><div>+</div></div></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                     <h3><a href="">{{ varia.product.title }}</a></h3>
-                     <div class="price">
-                       <span>{{ varia.product.price }} <sup>đ</sup></span>
-                        <span>{{ varia.price }} <sup>đ</sup></span>
-                     </div>
-                  </div>
-                  {% endfor %}
-               </div>
-               <div class="clearfix-30"></div>
-               <h2 class="titleH2"><a href="">Sản phẩm đang khuyến mại</a></h2>
-               <div class="product owl-carousel">
-                  {% for varia in  variation %}
-                  <div class="productItem item">
-                     <a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">
-                     <span class="seeMore">xem thêm</span></a>
-                     <a onclick="add_cart_login({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>
-                     <span class="sale">-33%</span>
+				{% endfor %}
+				</div>
+				<div class="row load_more_row">
+					<div class="col">
+						<div class="button load_more ml-auto mr-auto"><a href="#">load more</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                     <h3><a href="">{{ varia.product.title }}</a></h3>
-                     <div class="price">
-                       <span>{{ varia.product.price }} <sup>đ</sup></span>
-                        <span>{{ varia.price }} <sup>đ</sup></span>
-                     </div>
-                  </div>
+		<!-- Boxes -->
 
-                  {% endfor %}
-               </div>
+		<div class="boxes">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
 
-               <div class="clearfix-30"></div>
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_1.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_1_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Trendsetter Collection</div>
+									</div>
+								</div>
+							</div>
 
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_2.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_2_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Popular Choice</div>
+									</div>
+								</div>
+							</div>
 
-               <div class="clearfix-30"></div>
-               <div class="benefit">
-                  <div class="row">
-                     <h2 class="titleH2"><a href="">đến với bossgear bạn sẽ được</a></h2>
-                     <div class="col-md-4">
-                        <div class="benefit__item">
-                           <a href=""><img src="img/icon1.png" alt=""></a>
-                           <h3><a href="">Hỗ trợ ship cod toàn quốc</a></h3>
-                           <p>Ship tận nhà thanh toán sau khi nhận hàng, Thời gian ship từ 2-5 ngày .</p>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="benefit__item">
-                           <a href=""><img src="img/anh2.png" alt=""></a>
-                           <h3><a href="">Dịnh vụ bảo hành nhanh gọn</a></h3>
-                           <p>Hỗ trợ bảo hành nhanh chóng và nhiệt tình, Free ship trở lại cho khách hàng nếu bị lỗi và khách hàng ở xa.</p>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="benefit__item border--none">
-                           <a href=""><img src="img/anh3.png" alt=""></a>
-                           <h3><a href="">giải đáp khách hàng nhiệt tình</a></h3>
-                           <p>Hỗ trợ khách hàng nhanh chóng, nhiệt tình, thân thiện.</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="clearfix"></div>
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_3.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_3_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Popular Choice</div>
+									</div>
+								</div>
+							</div>
 
-               <div class="clearfix"></div>
-               <div class="follow">
-                  <div class="row">
-                     <h2 class="titleH2"><a href="">theo dõi bossgear bmt</a></h2>
-                     <div class="col-md-4 col-sm-4">
-                        <div class="followItem">
-                           <h3>fanpage</h3>
-                           <a href="" class="followItem__icon"><i class="fa fa-facebook" aria-hidden="true"></i>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="col-md-4 col-sm-4 ">
-                        <div class="followItem">
-                           <h3>Kênh youtube</h3>
-                           <a href="" class="followItem__icon"><i class="fa fa-youtube-play" aria-hidden="true"></i>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="col-md-4 col-sm-4">
-                        <div class="followItem ">
-                           <h3>vị trí shop</h3>
-                           <a href="" class="followItem__box">Map <i class="fa fa-map-marker" aria-hidden="true"></i>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </main>
-      <!-- footer -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Features -->
+
+		<div class="features">
+			<div class="container">
+				<div class="row">
+
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon"><img src="images/icon_1.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Fast Secure Payments</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon ml-auto mr-auto"><img src="images/icon_2.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Premium Products</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon"><img src="images/icon_3.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Free Delivery</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
 {% endblock %}
 {% block jsblock %}
-	<script type="text/javascript" src="{% static 'homepage/js/jquery-1.11.1.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/owl.carousel.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/common.js' %}"></script>
-
-	<script>
-          $(document).ready(function(){
-                $(".chat .close").click(function(){
-                    $(".chat img").hide();
-                });
-                $(".chat .close").click(function(){
-                    $(this).hide();
-                });
-                });
-      </script>
+<script src="{% static 'homepage/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'homepage/styles/bootstrap-4.1.2/popper.js' %}"></script>
+<script src="{% static 'homepage/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'homepage/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'homepage/plugins/progressbar/progressbar.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'homepage/js/custom.js' %}"></script>
 <script src="{% static 'homepage/js/myscript.js' %}"></script>
 {% endblock %}
-

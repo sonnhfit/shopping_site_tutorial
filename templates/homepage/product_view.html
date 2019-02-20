@@ -2,20 +2,11 @@
 {% load static %}
 
 {% block cssblock %}
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/bootstrap4/bootstrap.min.css' %}">
-<link href="{% static 'homepage/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/OwlCarousel2-2.2.1/animate.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/product_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+<link href="{% static 'homepage/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/plugins/flexslider/flexslider.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/product.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'homepage/styles/product_responsive.css' %}">
-	<link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/font-awesome.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/animate.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/owl.carousel.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/common.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/style.css' %}" rel="stylesheet"/>
-	<link href="{% static 'homepage/css/setmedia.css' %}" rel="stylesheet"/>
 
 {% endblock %}
 {% block content %}
@@ -25,32 +16,20 @@
 {% endblock %}
 {% block jsblock %}
 <!--<script src="{% static 'homepage/js/jquery-3.3.1.min.js' %}"></script>-->
-<script src="{% static 'homepage/styles/bootstrap4/popper.js' %}"></script>
-<script src="{% static 'homepage/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'homepage/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'homepage/styles/bootstrap-4.1.2/popper.js' %}"></script>
+<script src="{% static 'homepage/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/greensock/TweenMax.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/greensock/TimelineMax.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/greensock/animation.gsap.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
 <script src="{% static 'homepage/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-<script src="{% static 'homepage/plugins/slick-1.8.0/slick.js' %}"></script>
 <script src="{% static 'homepage/plugins/easing/easing.js' %}"></script>
-<script src="{% static 'homepage/js/product_custom.js' %}"></script>
-<script type="text/javascript" src="{% static 'homepage/js/jquery-1.11.1.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/owl.carousel.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'homepage/js/common.js' %}"></script>
-
-	<script>
-          $(document).ready(function(){
-                $(".chat .close").click(function(){
-                    $(".chat img").hide();
-                });
-                $(".chat .close").click(function(){
-                    $(this).hide();
-                });
-                });
-      </script>
+<script src="{% static 'homepage/plugins/progressbar/progressbar.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'homepage/plugins/flexslider/jquery.flexslider-min.js' %}"></script>
+<script src="{% static 'homepage/js/product.js' %}"></script>
 <script src="{% static 'homepage/js/myscript.js' %}"></script>
 
 {% endblock %}

@@ -1,62 +1,93 @@
-	<!-- Cart -->
+<div style="height: 100px;"></div>
 
-	<div class="cart_section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="cart_container">
-						<div class="cart_title">Giỏ hàng</div>
-						<div class="cart_items">
-							<ul class="cart_list">
-								{% for item in cart_item %}
-								<li class="cart_item clearfix">
-									<div class="cart_item_image"><img src="/media/{{ item.item.product.product_img }}" alt=""></div>
-									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-										<div class="cart_item_name cart_info_col">
-											<div class="cart_item_title">Tên</div>
-											<div class="cart_item_text">{{ item.item.title }}</div>
-										</div>
-										<div class="cart_item_quantity cart_info_col">
-											<div class="cart_item_title">Số lượng</div>
-											<div class="cart_item_text">{{ item.quantity }}</div>
-										</div>
-										<div class="cart_item_price cart_info_col">
-											<div class="cart_item_title">giá</div>
-											<div class="cart_item_text">{{ item.item.price }}</div>
-										</div>
-										<div class="cart_item_total cart_info_col">
-											<div class="cart_item_title">Tổng</div>
-											<div class="cart_item_text"> {{ item.get_total_price }} VNĐ</div>
-										</div>
-										<div class="cart_item_price cart_info_col">
-											<div class="cart_item_title"></div>
-											{% if not request.user.is_authenticated %}
-											<div class="cart_item_text"><button onclick="del_cart({{ item.id }})">Xóa</button></div>
-											{% else %}
-											<div class="cart_item_text"><button onclick="del_cart_user({{ item.id }})">Xóa</button></div>
-											{% endif %}
 
+
+		<!-- Cart -->
+
+		<div class="cart_section">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="cart_container">
+
+							<!-- Cart Bar -->
+							<div class="cart_bar">
+								<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+									<li class="mr-auto">Product</li>
+									<li>Color</li>
+									<li>Size</li>
+									<li>Price</li>
+									<li>Quantity</li>
+									<li>Total</li>
+								</ul>
+							</div>
+
+							<!-- Cart Items -->
+							<div class="cart_items">
+								<ul class="cart_items_list">
+{% for item in cart_item %}
+									<!-- Cart Item -->
+									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+											<div><div class="product_number">1</div></div>
+											<div><div class="product_image"><img src="images/cart_item_1.jpg" alt=""></div></div>
+											<div class="product_name_container">
+												<div class="product_name"><a href="product.html">{{ item.item.title }}</a></div>
+
+											</div>
 										</div>
-									</div>
-								</li>
+										<div class="product_color product_text"><span>Số lượng: </span>{{ item.quantity }}</div>
+
+										<div class="product_price product_text"><span>Giá: </span>{{ item.item.price }}</div>
+
+
+
+												{% if not request.user.is_authenticated %}
+												<div style="background-color: #CCC; text-align: center;" onclick="del_cart({{ item.id }})" class="product_quantity_container"><a >Xóa</a></div>
+												{% else %}
+												<div style="background-color: #CCC; text-align: center;" onclick="del_cart_user({{ item.id }})" class="product_text product_num">
+													<a >Xóa</a></div>
+												{% endif %}
+
+
+										<div class="product_total product_text"><span>Total: </span>{{ item.get_total_price }} VNĐ</div>
+									</li>
+
 								{% endfor %}
-							</ul>
-						</div>
+								</ul>
+							</div>
 
-						<!-- Order Total -->
-						<div class="order_total">
-							<div class="order_total_content text-md-right">
-								<div class="order_total_title">Tổng hóa đơn:</div>
-								<div class="order_total_amount">{{ global_data.total_price }}</div>
+							<!-- Cart Buttons -->
+							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+									<div class="button button_clear trans_200"><a href="categories.html">clear cart</a></div>
+									<div class="button button_continue trans_200"><a href="{% url 'order:checkout' %}">Thanh toán</a></div>
+								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="row cart_extra_row">
+					<div class="col-lg-6">
 
-						<div class="cart_buttons">
+					</div>
+					<div class="col-lg-6 cart_extra_col">
+						<div class="cart_extra cart_extra_2">
+							<div class="cart_extra_content cart_extra_total">
+								<div class="cart_extra_title">Cart Total</div>
+								<ul class="cart_extra_total_list">
 
-							<a href="{% url 'order:checkout' %}"  class="button cart_button_checkout">Thanh toán</a>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_extra_total_title">Total</div>
+										<div class="cart_extra_total_value ml-auto">{{ global_data.total_price }} VNĐ</div>
+									</li>
+								</ul>
+								<div class="checkout_button trans_200"><a href="{% url 'order:checkout' %}">Thanh toán</a></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+		<!-- Footer -->

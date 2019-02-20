@@ -1,74 +1,107 @@
-<!-- Single Product -->
+{% load static %}
 
-	<div class="single_product">
-		<div class="container">
-			<div class="row">
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 
-				<!-- Images -->
-				<div class="col-lg-2 order-lg-1 order-2">
-					<ul class="image_list">
-						<li data-image="/media/{{ variation.product.product_img }}"><img src="{{ variation.product.product_img }}" alt=""></li>
-						<li data-image="/media/{{ variation.product.product_img }}"><img src="{{ variation.product.product_img }}" alt=""></li>
-						<li data-image="/media/{{ variation.product.product_img }}"><img src="{{ variation.product.product_img }}" alt=""></li>
-					</ul>
-				</div>
+	<!-- Product -->
 
-				<!-- Selected Image -->
-				<div class="col-lg-5 order-lg-2 order-1">
-					<div class="image_selected"><img src="/media/{{ variation.product.product_img }}" alt=""></div>
-				</div>
+		<div class="product">
+			<div class="container">
+				<div class="row">
 
-				<!-- Description -->
-				<div class="col-lg-5 order-3">
-					<div class="product_description">
-						<div class="product_category">{{ variation.product.category.title }}</div>
-						<div class="product_name">{{ variation.product.title }}</div>
-						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="product_text"><p>{{ variation.product.description }}</p></div>
-						<div class="order_info d-flex flex-row">
-							<form action="#">
-								<div class="clearfix" style="z-index: 0;">
-
-									<!-- Product Quantity -->
-									<div class="product_quantity clearfix">
-
-										<span>Số lượng: </span>
-										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-										<div class="quantity_buttons">
-											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-										</div>
-									</div>
-
-									<!-- Product Color -->
-									<ul class="product_color">
+					<!-- Product Image -->
+					<div class="col-lg-6">
+						<div class="product_image_slider_container">
+							<div id="slider" class="flexslider">
+								<ul class="slides">
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+									<li>
+										<img src="/media/{{ variation.product.product_img }}" />
+									</li>
+								</ul>
+							</div>
+							<div class="carousel_container">
+								<div id="carousel" class="flexslider">
+									<ul class="slides">
 										<li>
-											<span>Màu: </span>
-											<div class="color_mark_container"><div id="selected_color" class="color_mark"></div></div>
-											<div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
-
-											<ul class="color_list">
-												<li><div class="color_mark" style="background: #999999;"></div></li>
-												<li><div class="color_mark" style="background: #b19c83;"></div></li>
-												<li><div class="color_mark" style="background: #000000;"></div></li>
-											</ul>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
+										</li>
+										<li>
+											<div><img src="/media/{{ variation.product.product_img }}" /></div>
 										</li>
 									</ul>
-
 								</div>
+								<div class="fs_prev fs_nav disabled"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+								<div class="fs_next fs_nav"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+							</div>
+						</div>
+					</div>
 
-								<div class="product_price">{{ variation.price }} VNĐ</div>
-								<div class="button_container">
-									<button onclick="add_cart({{ variation.id }}, 1);" type="button" class="button cart_button">Thêm vào giỏ</button>
-									<div class="product_fav"><i class="fas fa-heart"></i></div>
+					<!-- Product Info -->
+					<div class="col-lg-6 product_col">
+						<div class="product_info">
+							<div class="product_name">{{ variation.product.description }}</div>
+							<div class="product_category">{{ variation.product.category.title }}</div>
+							<div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
+								<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+								<div class="product_reviews">4.7 out of (3514)</div>
+								<div class="product_reviews_link"><a href="#">Reviews</a></div>
+							</div>
+							<div class="product_price">{{ variation.price }} VNĐ</div>
+							<div class="product_size">
+
+
+							</div>
+							<div class="product_text">
+								<p>{{ variation.product.description }} </p>
+							</div>
+							<div class="product_buttons">
+								<div class="text-right d-flex flex-row align-items-start justify-content-start">
+
+									<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+										<div onclick="add_cart({{ variation.id }}, 1);"><div><img src="{% static 'homepage/images/cart.svg' %}" class="svg" alt=""><div>+</div></div></div>
+									</div>
 								</div>
-
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	</div>
-
