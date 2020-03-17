@@ -1,0 +1,53 @@
+	<!-- Cart -->
+
+	<div class="cart_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="cart_container">
+						<div class="cart_title">Đặt hàng</div>
+						 {% if request.user.is_authenticated %}
+                        <form action="" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="cart_id" id="_cart_id" value="">
+							Họ Tên
+                            <input type="text" class="form-control" name="name"
+								   value="{{ request.user.first_name }} {{ request.user.last_name }}"
+								   >
+							Số điện thoại
+							<input type="text" class="form-control" name="phone_number" value="{{ request.user.phone_number}}">
+							Địa chỉ
+							<input type="text" class="form-control" name="shipping_address" value="{{ request.user.address}}">
+							Thông tin thêm
+							<textarea class="form-control" name="order_description"  cols="30" rows="10"></textarea>
+
+						<div class="cart_buttons">
+							<button type="submit" class="button cart_button_checkout">Đặt Hàng</button>
+						</div>
+						</form>
+						{% else%}
+						<form action="" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="cart_id" id="_cart_id" value="">
+							Họ Tên
+                            <input type="text" class="form-control" name="name"
+								   value=""
+								   >
+							Số điện thoại
+							<input type="text" class="form-control" name="phone_number" >
+							Địa chỉ
+							<input type="text" class="form-control" name="shipping_address" >
+							Thông tin thêm
+							<textarea class="form-control" name="order_description"  cols="30" rows="10"></textarea>
+
+						<div class="cart_buttons">
+							<button type="submit" class="button cart_button_checkout">Đặt Hàng</button>
+						</div>
+						</form>
+{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

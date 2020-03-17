@@ -51,7 +51,7 @@ class AddCartAPIView(APIView):
                 cart = Cart.objects.create(user_id=user_id)
             varia = product_models.Variation.objects.get(id=item_id)
             CartItem.objects.create(cart=cart, quantity=quantity, item=varia)
-            return Response('create thanh cong', status=status.HTTP_200_OK)
+            return Response(cart.id, status=status.HTTP_200_OK)
 
         else:
             if cart_id == -1:
@@ -75,11 +75,46 @@ class AddCartAPIView(APIView):
             #
             #     return Response(data=cart_sertial.data, status=status.HTTP_200_OK)
             # else:
+
+            # try:
+            #     cart = Cart.objects.get(id=cart_id)
+            # except ObjectDoesNotExist:
+            #     return Response('bad request', status=status.HTTP_400_BAD_REQUEST)
+            #
+            # varia = product_models.Variation.objects.get(id=item_id)
+            # CartItem.objects.create(cart=cart, item=varia, quantity=quantity)
+            # cart_sertial = CartSerializer(data=cart)
+            # return Response(cart_sertial.data, status=status.HTTP_200_OK)
+
+
+class DelCartItem(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def delete(self, request):
+        valid = DeleteCartItemSerializer(data=request.data)
+
+        if not valid.is_valid():
+            return Response('not valid data', status=status.HTTP_400_BAD_REQUEST)
+        item_id = valid.data['cart_item_id']
+        cart_id = valid.data['cart_id']
+
+        if request.user.is_authenticated:
+            user_id = request.user.id
+            try:
+                cart = Cart.objects.get(user_id=user_id)
+            except ObjectDoesNotExist:
+                return Response('object does not exits', status=status.HTTP_200_OK)
+
+            CartItem.objects.filter(cart=cart, id=item_id).delete()
+            return Response('del oke', status=status.HTTP_200_OK)
+        else:
+            if cart_id == -1:
+                return Response('cart not found', status=status.HTTP_200_OK)
+            else:
                 try:
                     cart = Cart.objects.get(id=cart_id)
                 except ObjectDoesNotExist:
                     return Response('bad request', status=status.HTTP_400_BAD_REQUEST)
-                varia = product_models.Variation.objects.get(id=item_id)
-                CartItem.objects.create(cart=cart, item=varia, quantity=quantity)
-                cart_sertial = CartSerializer(data=cart)
-                return Response(cart_sertial.data, status=status.HTTP_200_OK)
+
+                CartItem.objects.filter(cart=cart, id=item_id).delete()
+                return Response('del oke', status=status.HTTP_200_OK)

@@ -25,6 +25,7 @@ urlpatterns = i18n_patterns(
     path('user/', include('user.urls')),
     path('cart/', include('cart.urls')),
     path('product/', include('product.urls')),
+    path('order/', include('order.urls')),
     prefix_default_language=False
 )
 

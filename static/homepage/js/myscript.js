@@ -57,13 +57,24 @@ function checkCookie() {
 }
 
 var user = getCookie("cart_id");
+
 if (user != "") {
     console.log("Welcome again ");
+    user = -1;
 }
 else{
     setCookie("cart_id", -1, 360)
     console.log("setcookie thanh -1 thanh cong");
 }
+
+if (typeof user === "undefined") {
+     setCookie("cart_id", -1, 360);
+     console.log('undefine');
+}
+else{
+console.log('define0');
+}
+
 function add_cart(item_id, quantity){
 
     $.ajax({
@@ -91,3 +102,81 @@ function add_cart(item_id, quantity){
         });
 }
 
+
+function add_cart_login(item_id, quantity){
+
+    $.ajax({
+        type: 'POST',
+        url: '/cart/add/',
+        data: JSON.stringify({
+            "item_id": item_id,
+             "quantity": quantity,
+             "cart_id": -1
+            }),
+        contentType: "application/json",
+        dataType: 'json'
+         }).done(function(data, statusText, xhr){
+            console.log(data);
+           var status = xhr.status;                //200
+           // var head = xhr.getAllResponseHeaders(); //Detail header info
+            if(status==200){
+                setCookie("cart_id", data, 360)
+                console.log('set coookie thanh cong='+data)
+                location.reload();
+            }else{
+                console.log('error');
+            }
+
+        });
+}
+
+
+function del_cart(item_id){
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/cart/del/',
+        data: JSON.stringify({
+             "cart_item_id": item_id,
+             "cart_id": getCookie("cart_id")
+            }),
+        contentType: "application/json",
+        dataType: 'json'
+         }).done(function(data, statusText, xhr){
+            console.log(data);
+           var status = xhr.status;                //200
+           // var head = xhr.getAllResponseHeaders(); //Detail header info
+            if(status==200){
+
+                location.reload();
+            }else{
+                console.log('error');
+            }
+
+        });
+}
+
+function del_cart_user(item_id){
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/cart/del/',
+        data: JSON.stringify({
+             "cart_item_id": item_id,
+             "cart_id": -1
+            }),
+        contentType: "application/json",
+        dataType: 'json'
+         }).done(function(data, statusText, xhr){
+            console.log(data);
+           var status = xhr.status;                //200
+           // var head = xhr.getAllResponseHeaders(); //Detail header info
+            if(status==200){
+
+                location.reload();
+            }else{
+                console.log('error');
+            }
+
+        });
+}

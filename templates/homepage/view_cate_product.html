@@ -1,0 +1,128 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block cssblock %}
+	<link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/font-awesome.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/animate.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/owl.carousel.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/common.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/style.css' %}" rel="stylesheet"/>
+	<link href="{% static 'homepage/css/setmedia.css' %}" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+{% endblock %}
+{% block content %}
+ <!-- main content -->
+      <main>
+         <div class="imgBelow">
+            <a href=""><img src="{% static 'homepage/img/anhduoislide.jpg' %}" alt=""></a>
+            <div class="text">
+               <span><strong>Mua chuột nhỏ<br>Tặng lót bự</strong></span> <br>
+               <span>số lượng có hạn</span>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="container">
+            <div class="row_pc">
+               <h2 class="titleH2"><a href="">SẢN PHẨM:  {{ cates.title }}</a></h2>
+               <div class="product owl-carousel">
+                  {% for varia in  variation %}
+                  <div class="productItem item">
+                     <a href="{% url 'product:detail' varia.id %}"><img src="/media/{{ varia.product.product_img }}" alt="">
+                     <span class="seeMore">xem thêm</span></a>
+                     <a onclick="add_cart_login({{ varia.id }}, 1);" class="cart-icon "><strong>+</strong></a>
+                     <span class="sale">-33%</span>
+
+                     <h3><a href="">{{ varia.product.title }}</a></h3>
+                     <div class="price">
+                        <span>{{ varia.product.price }} <sup>đ</sup></span>
+                        <span>{{ varia.sale_price  }} <sup>đ</sup></span>
+                     </div>
+                  </div>
+
+                  {% endfor %}
+               </div>
+
+               <div class="clearfix-30"></div>
+
+
+               <div class="clearfix-30"></div>
+               <div class="benefit">
+                  <div class="row">
+                     <h2 class="titleH2"><a href="">đến với bossgear bạn sẽ được</a></h2>
+                     <div class="col-md-4">
+                        <div class="benefit__item">
+                           <a href=""><img src="img/icon1.png" alt=""></a>
+                           <h3><a href="">Hỗ trợ ship cod toàn quốc</a></h3>
+                           <p>Ship tận nhà thanh toán sau khi nhận hàng, Thời gian ship từ 2-5 ngày .</p>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="benefit__item">
+                           <a href=""><img src="img/anh2.png" alt=""></a>
+                           <h3><a href="">Dịnh vụ bảo hành nhanh gọn</a></h3>
+                           <p>Hỗ trợ bảo hành nhanh chóng và nhiệt tình, Free ship trở lại cho khách hàng nếu bị lỗi và khách hàng ở xa.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="benefit__item border--none">
+                           <a href=""><img src="img/anh3.png" alt=""></a>
+                           <h3><a href="">giải đáp khách hàng nhiệt tình</a></h3>
+                           <p>Hỗ trợ khách hàng nhanh chóng, nhiệt tình, thân thiện.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+
+               <div class="clearfix"></div>
+               <div class="follow">
+                  <div class="row">
+                     <h2 class="titleH2"><a href="">theo dõi bossgear bmt</a></h2>
+                     <div class="col-md-4 col-sm-4">
+                        <div class="followItem">
+                           <h3>fanpage</h3>
+                           <a href="" class="followItem__icon"><i class="fa fa-facebook" aria-hidden="true"></i>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-sm-4 ">
+                        <div class="followItem">
+                           <h3>Kênh youtube</h3>
+                           <a href="" class="followItem__icon"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-sm-4">
+                        <div class="followItem ">
+                           <h3>vị trí shop</h3>
+                           <a href="" class="followItem__box">Map <i class="fa fa-map-marker" aria-hidden="true"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <!-- footer -->
+{% endblock %}
+{% block jsblock %}
+	<script type="text/javascript" src="{% static 'homepage/js/jquery-1.11.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'homepage/js/owl.carousel.js' %}"></script>
+	<script type="text/javascript" src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'homepage/js/common.js' %}"></script>
+
+	<script>
+          $(document).ready(function(){
+                $(".chat .close").click(function(){
+                    $(".chat img").hide();
+                });
+                $(".chat .close").click(function(){
+                    $(this).hide();
+                });
+                });
+      </script>
+<script src="{% static 'homepage/js/myscript.js' %}"></script>
+{% endblock %}
+

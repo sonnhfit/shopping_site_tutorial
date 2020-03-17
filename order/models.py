@@ -5,8 +5,10 @@ from cart.models import Cart
 
 
 class Order(models.Model):
-    user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE, verbose_name='Khách hàng')
+    user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE, null=True,default=None, blank=True, verbose_name='Khách hàng')
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, verbose_name='Giỏ hàng')
+    name = models.CharField(default='', max_length=200, verbose_name='Họ tên')
+    phone_number = models.CharField(default='', max_length=200, verbose_name='Số điện thoại')
     shipping_address = models.CharField(max_length=255, default='', verbose_name='Địa chỉ giao hàng')
     order_description = models.TextField(default='', verbose_name='Mô tả đơn hàng')
     is_completed = models.BooleanField(default=False, verbose_name='Trạng thái đơn hàng')
@@ -15,3 +17,4 @@ class Order(models.Model):
 
     class Meta:
         verbose_name_plural = "Quản lý đặt hàng"
+

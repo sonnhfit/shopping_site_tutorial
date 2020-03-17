@@ -1237,6 +1237,7 @@ select option
 	width: 100%;
 	padding: 15px;
 	padding-right: 46px;
+	border-top: 1px solid;
 }
 .cart_item_image
 {
